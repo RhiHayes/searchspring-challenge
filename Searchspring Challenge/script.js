@@ -9,7 +9,7 @@ $("#searchButton").click(function() {
 })
 
 //Previous functionality
-$("#prev").click(function() {
+$("#previous").click(function() {
 
     const userSearch = $("#search").val();
 
@@ -28,14 +28,39 @@ $("#next").click(function() {
 //Gives pagination data
 function paginateData(searchData) {
     const pageData = {
+        prev: searchData.pagination.previousPage,
         curr: searchData.pagination.currentPage,
-        next: searchData.pagination.nextPage,
-        prev: searchData.pagination.previousPage
+        next: searchData.pagination.nextPage
     }
 
     return pageData;
 }
 
+//Determines display of prev and next buttons
+function displayButtons(pageNumber) {
+
+    //Checks only prev validation
+    if(pageNumber.prev === 0) {
+        $("#previous").hide(); //No more pages left
+    } else if(pageNumber.prev !== 0) {
+        $("#previous").show(); //Still pages left
+    } else {
+        console.log(pageNumber) //error catcher
+    }
+
+    //Checks only next validation
+    if (pageNumber.next === 0) {
+        $("#next").hide();
+    } else if(pageNumber.next !== 0) {
+        $("#next").show();
+    } else {
+        console.log(pageNumber)
+    }
+
+    //Note for me: tried doing this where both if statements were merged into one big if statement.
+    // It didn't work. Once one is triggered the rest don't fire. Keep seperated.
+
+}
 
 function userRequest(q, pageNum) {
 
@@ -56,6 +81,8 @@ function userRequest(q, pageNum) {
             console.log(data.results) //Turns it into manipulable data
             pageNumber = paginateData(data); //Assigns number to pageNumber by finding page data
             renderProducts(data.results);
+            displayButtons(pageNumber);
+            console.log(data);
 
         })
         .catch(error =>
