@@ -182,15 +182,26 @@ function renderProducts(products) {
         let originalPrice = parseFloat(result.price).toFixed(2)
         let salePrice = parseFloat(result.msrp).toFixed(2)
 
-        html += "<img src=\"" + result.thumbnailImageUrl + "\">" +
-        "<h1>" + result.name + "</h1>"
+        html += ""
+
+        html += "<div class=\"card col-md-3 col-centered\">"
+
+        html += "<div class=\"card-body\">"
+
+        html += "<img class= \"card-img-top\" src=\"" + result.thumbnailImageUrl + "\">" +
+            "<h4 class= \"card-title\">" + result.name + "</h4>"
 
         if (!hasSale || originalPrice >= salePrice) {
             html += "<p>$" + originalPrice + "</p>"
         } else {
-            html += "<p><strike>$" + salePrice + "</strike></p>" + " " +
-                "<p>$" + originalPrice + "</p>"
+            html += "<p class=\"new-price\"><strike>$" + salePrice + "</strike></p>" + " " +
+                "<p class=\"new-price\">$" + originalPrice + "</p>"
         }
+
+        html +=
+
+        html += "</div>"
+        html += "</div>"
     })
 
     document.getElementById("results").innerHTML = html

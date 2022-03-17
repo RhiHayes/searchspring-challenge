@@ -85,3 +85,21 @@
     background-color: white;
 }
 
+.card {
+    padding: 30px;
+    border: none;
+    text-align: center;
+    transition: 0.3s;
+    width: 40%;
+}
+
+
+.card-title {
+    margin-top: 20px;
+}
+
+.new-price {
+    margin-right: 5px;
+    display: inline-block;
+}
+
