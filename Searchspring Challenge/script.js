@@ -1,11 +1,13 @@
 const searchSpringAPI = "https://scmq7n.a.searchspring.io/api/search/search.json"
 let pageNumber;
 let colorArray = [];
+let clothingArray = [];
 
 $("#searchButton").click(function() {
     const userSearch = $("#search").val();
 
     $(".color-box").data('clicked', false);
+    $(".dropdown-item").data('clicked', false);
 
     userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
 
@@ -24,8 +26,16 @@ $("#previous").click(function() {
 
         userSearch = myColor;
 
-    //If not, use search results
-    } else {
+        //Check to see if dropdown was clicked
+    } else if ($('.dropdown-item').data('clicked')) {
+        let myClothes = clothingArray.slice(-1).pop()
+        console.log(myClothes);
+
+        userSearch = myClothes;
+    }
+
+    //If none, use search results
+    else {
         userSearch = $("#search").val();
     }
 
@@ -45,8 +55,16 @@ $("#next").click(function() {
 
         userSearch = myColor;
 
-    //If not, use search results
-    } else {
+    //Check to see if dropdown was clicked
+    } else if ($('.dropdown-item').data('clicked')) {
+        let myClothes = clothingArray.slice(-1).pop()
+        console.log(myClothes);
+
+        userSearch = myClothes;
+    }
+
+    //If none, use search results
+    else {
         userSearch = $("#search").val();
     }
 
@@ -54,7 +72,7 @@ $("#next").click(function() {
 })
 
 
-//Registers color picker and pushes clicked color to an array
+//Registers color picker and pushes clicked color to an array (colorArray)
 $(".color-box").on('click', function() {
 
     let myColor = this.className.split(' ')[1];
@@ -63,11 +81,27 @@ $(".color-box").on('click', function() {
     let userSearch = myColor;
 
     $(".color-box").data('clicked', true);
+    $(".dropdown-item").data('clicked', false);
 
     colorArray.push(myColor);
-    console.log(colorArray);
 
     userRequest(userSearch, 1); //.next grabs the next page of data dynamically
+})
+
+
+//Registers dropdown click and pushes clicked item to an array (clothesArray)
+$(".dropdown-item").on('click', function() {
+
+    let myClothes = $(this).text();
+
+    let userSearch = myClothes;
+
+    $(".color-box").data('clicked', false);
+    $(".dropdown-item").data('clicked', true);
+
+    clothingArray.push(myClothes);
+
+    userRequest(userSearch, 1); //takes whatever dropdown item is clicked and searches for it
 })
 
 
