@@ -1,21 +1,50 @@
 const searchSpringAPI = "https://scmq7n.a.searchspring.io/api/search/search.json"
-
+let pageNumber;
 
 $("#searchButton").click(function() {
     const userSearch = $("#search").val();
-    console.log(userSearch);
 
-    userRequest(userSearch); //passing in user search
+    userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
+
+})
+
+//Previous functionality
+$("#prev").click(function() {
+
+    const userSearch = $("#search").val();
+
+    userRequest(userSearch, pageNumber.prev); //.prev grabs the previous page of data dynamically
+})
+
+//Next functionality
+$("#next").click(function() {
+
+    const userSearch = $("#search").val();
+
+    userRequest(userSearch, pageNumber.next); //.next grabs the next page of data dynamically
 })
 
 
-function userRequest(q) {
+//Gives pagination data
+function paginateData(searchData) {
+    const pageData = {
+        curr: searchData.pagination.currentPage,
+        next: searchData.pagination.nextPage,
+        prev: searchData.pagination.previousPage
+    }
+
+    return pageData;
+}
+
+
+function userRequest(q, pageNum) {
 
     const searchParameters = new URLSearchParams({
         resultsFormat: "native",
         siteId: "scmq7n",
         q: q,
-        resultsPerPage: 21
+        page: pageNum,
+        resultsPerPage: 20
     });
 
     const editedURL = searchSpringAPI + "?" + searchParameters;
@@ -25,6 +54,7 @@ function userRequest(q) {
     .then(response => response.json())
         .then(data => {
             console.log(data.results) //Turns it into manipulable data
+            pageNumber = paginateData(data); //Assigns number to pageNumber by finding page data
             renderProducts(data.results);
 
         })
@@ -36,7 +66,7 @@ function userRequest(q) {
 
 function renderProducts(products) {
 
-    let html = ""; //Clears html out everytime function is called
+    let html = ""; //Clears html out every time function is called
 
     products.forEach(result => {
 
