@@ -1,8 +1,11 @@
 const searchSpringAPI = "https://scmq7n.a.searchspring.io/api/search/search.json"
 let pageNumber;
+let colorArray = [];
 
 $("#searchButton").click(function() {
     const userSearch = $("#search").val();
+
+    $(".color-box").data('clicked', false);
 
     userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
 
@@ -11,7 +14,20 @@ $("#searchButton").click(function() {
 //Previous functionality
 $("#previous").click(function() {
 
-    const userSearch = $("#search").val();
+    let userSearch;
+
+    //Check to see if color picker was used
+    if($('.color-box').data('clicked')) {
+
+        let myColor = colorArray.slice(-1).pop()
+        console.log(myColor);
+
+        userSearch = myColor;
+
+    //If not, use search results
+    } else {
+        userSearch = $("#search").val();
+    }
 
     userRequest(userSearch, pageNumber.prev); //.prev grabs the previous page of data dynamically
 })
@@ -19,9 +35,39 @@ $("#previous").click(function() {
 //Next functionality
 $("#next").click(function() {
 
-    const userSearch = $("#search").val();
+    let userSearch;
+
+    //Check to see if color picker was used
+    if($('.color-box').data('clicked')) {
+
+        let myColor = colorArray.slice(-1).pop()
+        console.log(myColor);
+
+        userSearch = myColor;
+
+    //If not, use search results
+    } else {
+        userSearch = $("#search").val();
+    }
 
     userRequest(userSearch, pageNumber.next); //.next grabs the next page of data dynamically
+})
+
+
+//Registers color picker and pushes clicked color to an array
+$(".color-box").on('click', function() {
+
+    let myColor = this.className.split(' ')[1];
+    console.log(myColor);
+
+    let userSearch = myColor;
+
+    $(".color-box").data('clicked', true);
+
+    colorArray.push(myColor);
+    console.log(colorArray);
+
+    userRequest(userSearch, 1); //.next grabs the next page of data dynamically
 })
 
 
