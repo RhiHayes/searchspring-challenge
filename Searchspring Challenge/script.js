@@ -183,6 +183,7 @@ function userRequest(q, pageNum) {
 function renderProducts(products) {
 
     let html = ""; //Clears html out every time function is called
+    let anchor = document.querySelector(".results-section");
 
     products.forEach(result => {
 
@@ -201,19 +202,20 @@ function renderProducts(products) {
             "<h4 class= \"card-title\">" + result.name + "</h4>"
 
         if (!hasSale || originalPrice >= salePrice) {
-            html += "<p>$" + originalPrice + "</p>"
+            html += "<p class=\"normal-price\">$" + originalPrice + "</p>"
         } else {
-            html += "<p class=\"new-price\"><strike>$" + salePrice + "</strike></p>" + " " +
+            html += "<p class=\"strike-price\"><strike>$" + salePrice + "</strike></p>" + " " +
                 "<p class=\"new-price\">$" + originalPrice + "</p>"
         }
 
         html += "<br>"
-        html += "<button type=\"button\" class=\"btn btn-secondary text-center\">Add To Cart</button>"
+        html += "<button type=\"button\" class=\"btn gradient-btn text-center\">Add To Cart</button>"
 
         html += "</div>"
         html += "</div>"
     })
 
     document.getElementById("results").innerHTML = html
+    anchor.scrollIntoView({behavior: "smooth"});
 
 }
