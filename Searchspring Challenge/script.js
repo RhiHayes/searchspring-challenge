@@ -55,7 +55,7 @@ $("#next").click(function() {
 
         userSearch = myColor;
 
-    //Check to see if dropdown was clicked
+        //Check to see if dropdown was clicked
     } else if ($('.dropdown-item').data('clicked')) {
         let myClothes = clothingArray.slice(-1).pop()
         console.log(myClothes);
@@ -156,7 +156,7 @@ function userRequest(q, pageNum) {
 
     fetch(editedURL) //Getting URL
 
-    .then(response => response.json())
+        .then(response => response.json())
         .then(data => {
             console.log(data.results) //Turns it into manipulable data
             pageNumber = paginateData(data); //Assigns number to pageNumber by finding page data
@@ -198,7 +198,7 @@ function renderProducts(products) {
                 "<p class=\"new-price\">$" + originalPrice + "</p>"
         }
 
-        html +=
+
 
         html += "</div>"
         html += "</div>"
