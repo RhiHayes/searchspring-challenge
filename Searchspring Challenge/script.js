@@ -3,11 +3,17 @@ let pageNumber;
 let colorArray = [];
 let clothingArray = [];
 
+$("#previous").hide()
+$("#next").hide()
+
 $("#searchButton").click(function() {
     const userSearch = $("#search").val();
 
     $(".color-box").data('clicked', false);
     $(".dropdown-item").data('clicked', false);
+
+    $("#previous").show()
+    $("#next").show()
 
     userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
 
@@ -100,6 +106,9 @@ $(".dropdown-item").on('click', function() {
     $(".dropdown-item").data('clicked', true);
 
     clothingArray.push(myClothes);
+
+    $("#previous").show()
+    $("#next").show()
 
     userRequest(userSearch, 1); //takes whatever dropdown item is clicked and searches for it
 })
@@ -198,7 +207,8 @@ function renderProducts(products) {
                 "<p class=\"new-price\">$" + originalPrice + "</p>"
         }
 
-
+        html += "<br>"
+        html += "<button type=\"button\" class=\"btn btn-secondary text-center\">Add To Cart</button>"
 
         html += "</div>"
         html += "</div>"

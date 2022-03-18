@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <title>Sew Lovely</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nunito+Sans&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light gradient">
     <a class="navbar-brand" href="#">Sew Lovely</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -64,40 +69,80 @@
                 </div>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/RhiHayes" target="_blank"><img class="icon" src="images/25231.png"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.linkedin.com/in/rhiannon-nicole-hayes/" target="_blank"><img class="icon" src="images/linkedin.png"></a>
+            </li>
+        </ul>
     </div>
 </nav>
 
-<label for="search">Search:</label>
-<input type="search" id="search" name="userSearch">
+<section class="title-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h1 class="title">Sew Lovely</h1>
+                <h3 class="slogan">Where you feel like <i>you</i>.</h3>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2"> <!--EMPTY DIV FOR SPACING-->
+                <img class="title-image" src="images/19198076.jpg">
+            <div class="col-md-1"></div> <!--EMPTY DIV FOR SPACING-->
+            </div>
+        </div>
+    </div>
+</section>
 
-<button id="searchButton">Search</button>
+<br>
+
+<div class="row search-area">
+    <div class="col-lg-4">
+        <div class="input-group">
+        <input type="search" id="search" name="userSearch" class="form-control" placeholder="Find your style...">
+        <button type="button" class="btn btn-primary" id="searchButton">Search&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg></button>
+        </div>
+    </div>
+</div>
 
 <div class="color-picker">
 
+    <div class="col-lg-4">
     <div class="color-box dark-red"></div>
     <div class="color-box red"></div>
-    <div class="color-box dark-orange"></div>
     <div class="color-box orange"></div>
+    <div class="color-box gold"></div>
     <div class="color-box yellow"></div>
     <div class="color-box light-yellow"></div>
     <div class="color-box green"></div>
     <div class="color-box light-green"></div>
+    <div class="color-box mint"></div>
     <div class="color-box dark-blue"></div>
     <div class="color-box blue"></div>
     <div class="color-box light-blue"></div>
     <div class="color-box dark-purple"></div>
     <div class="color-box purple"></div>
+    <div class="color-box lavender"></div>
     <div class="color-box neon-pink"></div>
+    <div class="color-box coral"></div>
     <div class="color-box pink"></div>
     <div class="color-box brown"></div>
     <div class="color-box grey"></div>
     <div class="color-box black"></div>
     <div class="color-box white"></div>
-
 </div>
+</div>
+
+<section class="results-section">
 
 <div class="row" id="results">
 </div>
+
+</section>
 
 <button id="previous">Prev</button>
 <button id="next">Next</button>
