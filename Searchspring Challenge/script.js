@@ -185,6 +185,10 @@ function renderProducts(products) {
     let html = ""; //Clears html out every time function is called
     let anchor = document.querySelector(".results-section");
 
+    if (products.length === 0) {
+        html += "<h3 class=\"fail-message\">Uh oh! We couldn't find any matches.</h3>"
+    } else {
+
     products.forEach(result => {
 
         let hasSale = result.hasOwnProperty("msrp");
@@ -214,6 +218,8 @@ function renderProducts(products) {
         html += "</div>"
         html += "</div>"
     })
+    }
+
 
     document.getElementById("results").innerHTML = html
     anchor.scrollIntoView({behavior: "smooth"});
