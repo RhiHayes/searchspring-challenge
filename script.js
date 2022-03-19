@@ -21,6 +21,22 @@ $("#searchButton").click(function() {
 
 })
 
+//Checking for when a user hits enter
+$(document).on('keypress', function(e) {
+    if(e.which == 13) {
+        const userSearch = $("#search").val();
+
+        $(".color-box").data('clicked', false);
+        $(".dropdown-item").data('clicked', false);
+
+        $("#previous").show()
+        $("#next").show()
+        $(".search-results").show()
+
+        userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
+    }
+});
+
 //Previous functionality
 $("#previous").click(function() {
 
