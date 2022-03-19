@@ -410,3 +410,59 @@ html  {
 
 
 }
+
+@media (min-width: 400px) and (max-width: 419px) {
+
+    .fail-message {
+        margin-top: -60px;
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    .title-image {
+        width: 380px;
+        height: 230px;
+        margin-top: 10px;
+        margin-left: -10px;
+        margin-right: auto;
+        display: block;
+    }
+
+    .title {
+        margin-left: 0px;
+        margin-top: 80px;
+        font-size: 70px;
+        text-align: center;
+        font-family: 'Dancing Script', cursive;
+    }
+
+    .slogan {
+        margin-left: 0px;
+        font-size: 20px;
+        text-align: center;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .search-area {
+        margin-top: -100px;
+        margin-left: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .color-picker {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .results-section {
+        margin-top: 50px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 10px;
+    }
+
+
+}
