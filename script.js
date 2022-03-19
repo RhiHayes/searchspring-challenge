@@ -5,6 +5,7 @@ let clothingArray = [];
 
 $("#previous").hide()
 $("#next").hide()
+$(".search-results").hide()
 
 $("#searchButton").click(function() {
     const userSearch = $("#search").val();
@@ -14,6 +15,7 @@ $("#searchButton").click(function() {
 
     $("#previous").show()
     $("#next").show()
+    $(".search-results").show()
 
     userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
 
@@ -82,7 +84,6 @@ $("#next").click(function() {
 $(".color-box").on('click', function() {
 
     let myColor = this.className.split(' ')[1];
-    console.log(myColor);
 
     let userSearch = myColor;
 
@@ -90,6 +91,10 @@ $(".color-box").on('click', function() {
     $(".dropdown-item").data('clicked', false);
 
     colorArray.push(myColor);
+
+    $("#previous").show()
+    $("#next").show()
+    $(".search-results").show()
 
     userRequest(userSearch, 1); //.next grabs the next page of data dynamically
 })
@@ -109,6 +114,7 @@ $(".dropdown-item").on('click', function() {
 
     $("#previous").show()
     $("#next").show()
+    $(".search-results").show()
 
     userRequest(userSearch, 1); //takes whatever dropdown item is clicked and searches for it
 })
@@ -169,9 +175,33 @@ function userRequest(q, pageNum) {
         .then(data => {
             console.log(data.results) //Turns it into manipulable data
             pageNumber = paginateData(data); //Assigns number to pageNumber by finding page data
+
+            let newQ = q.replace(/-/g, " "); //Replace dash with spaces
+
+            //Capitalize first letter of every string
+            function toTitleCase(str) {
+                return str.replace(/\w\S*/g, function(txt){
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                });
+            }
+
+            let finalQ = toTitleCase(newQ) //Pass new q into function
+
+            $(".search").text(finalQ); //display final q
+
             renderProducts(data.results);
             displayButtons(pageNumber);
             console.log(data);
+
+            let cart = $(".cart").text();
+            let cartNum = parseInt(cart);
+
+            //Need to put functionality here or else this code doesn't work.
+            $(".add-to-cart-btn").on('click', function() {
+                cartNum++;
+                $(".cart").text(cartNum);
+            })
+
 
         })
         .catch(error =>
@@ -213,7 +243,7 @@ function renderProducts(products) {
         }
 
         html += "<br>"
-        html += "<button type=\"button\" class=\"btn gradient-btn text-center\">Add To Cart</button>"
+        html += "<button type=\"button\" class=\"btn gradient-btn text-center add-to-cart-btn\">Add To Cart</button>"
 
         html += "</div>"
         html += "</div>"

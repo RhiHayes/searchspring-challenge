@@ -11,6 +11,18 @@ html  {
     font-size: 30px;
 }
 
+.cart {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: black !important;
+}
+
+.cart-icon {
+    width: 30px;
+    height: 30px;
+}
+
 .navbar-brand {
     font-family: 'Dancing Script', cursive;
     font-size: 30px;
@@ -18,6 +30,7 @@ html  {
 
 .nav-link {
     font-family: 'Nunito Sans', sans-serif;
+    cursor: pointer;
 }
 
 .dropdown-item {
@@ -178,6 +191,12 @@ html  {
     width: 40%;
 }
 
+.search-results {
+    margin-top: 40px;
+    margin-left: 40px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 .card-title {
     margin-top: 20px;
     font-family: 'Nunito Sans', sans-serif;
@@ -191,6 +210,7 @@ html  {
 }
 
 .strike-price {
+    color: grey;
     margin-right: 5px;
     display: inline-block;
     font-family: 'Nunito Sans', sans-serif;
@@ -334,6 +354,13 @@ html  {
         font-family: 'Dancing Script', cursive;
     }
 
+    .search-results {
+        text-align: center;
+        margin-top: 40px;
+        margin-left: 40px;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
     .slogan {
         margin-left: 0px;
         font-size: 20px;
@@ -394,6 +421,13 @@ html  {
         padding-right: 10px;
     }
 
+    .search-results {
+        text-align: center;
+        margin-top: 40px;
+        margin-left: 40px;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
     .color-picker {
         margin-top: 20px;
         margin-left: 0px;
@@ -450,6 +484,13 @@ html  {
         padding-right: 10px;
     }
 
+    .search-results {
+        text-align: center;
+        margin-top: 40px;
+        margin-left: 40px;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
     .color-picker {
         margin-top: 20px;
         margin-left: 0px;
@@ -504,6 +545,13 @@ html  {
         margin-left: 0px;
         padding-left: 10px;
         padding-right: 10px;
+    }
+
+    .search-results {
+        text-align: center;
+        margin-top: 40px;
+        margin-left: 40px;
+        font-family: 'Nunito Sans', sans-serif;
     }
 
     .color-picker {
