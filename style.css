@@ -359,6 +359,7 @@ html, body {
     }
 
     .search-results {
+        margin-left: 0px;
         text-align: center;
         margin-top: 40px;
         font-family: 'Nunito Sans', sans-serif;
@@ -425,6 +426,7 @@ html, body {
     }
 
     .search-results {
+        margin-left: 0px;
         text-align: center;
         margin-top: 40px;
         font-family: 'Nunito Sans', sans-serif;
@@ -487,6 +489,7 @@ html, body {
     }
 
     .search-results {
+        margin-left: 0px;
         text-align: center;
         margin-top: 40px;
         font-family: 'Nunito Sans', sans-serif;
@@ -550,6 +553,7 @@ html, body {
 
     .search-results {
         text-align: center;
+        margin-left: 0px;
         margin-top: 40px;
         font-family: 'Nunito Sans', sans-serif;
     }
