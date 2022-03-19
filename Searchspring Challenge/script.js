@@ -194,7 +194,7 @@ function renderProducts(products) {
 
         html += ""
 
-        html += "<div class=\"card col-md-3 col-centered\">"
+        html += "<div class=\"card col-sm-6 col-md-4 col-lg-3 col-centered\">"
 
         html += "<div class=\"card-body\">"
 
@@ -219,3 +219,22 @@ function renderProducts(products) {
     anchor.scrollIntoView({behavior: "smooth"});
 
 }
+
+
+jQuery(document).ready(function($) {
+    var alterClass = function() {
+        var ww = document.body.clientWidth;
+        if (ww < 990) {
+            $('.search-col').addClass('mx-auto text-center');
+            $('.color-col').addClass('mx-auto text-center');
+        } else if (ww >= 991) {
+            $('.search-col').removeClass('mx-auto text-center');
+            $('.color-col').removeClass('mx-auto text-center');
+        };
+    };
+    $(window).resize(function(){
+        alterClass();
+    });
+    //Fire it when the page first loads:
+    alterClass();
+});
