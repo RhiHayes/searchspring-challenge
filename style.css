@@ -4,6 +4,15 @@ html  {
     overflow-x: hidden;
 }
 
+body {
+    overflow: hidden;
+    position: relative;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
 .fail-message {
     margin: 20px auto 50px;
     text-align: center;
