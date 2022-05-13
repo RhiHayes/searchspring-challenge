@@ -17,6 +17,7 @@ $("#searchButton").click(function() {
     $("#next").show()
     $(".search-results").show()
 
+    $("#results").empty();
     userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
 
 })
@@ -33,6 +34,7 @@ $(document).on('keypress', function(e) {
         $("#next").show()
         $(".search-results").show()
 
+        $("#results").empty();
         userRequest(userSearch, 1); //passing in user search + page number (don't want to use current here)
     }
 });
@@ -63,6 +65,7 @@ $("#previous").click(function() {
         userSearch = $("#search").val();
     }
 
+    $("#results").empty();
     userRequest(userSearch, pageNumber.prev); //.prev grabs the previous page of data dynamically
 })
 
@@ -92,6 +95,7 @@ $("#next").click(function() {
         userSearch = $("#search").val();
     }
 
+    $("#results").empty();
     userRequest(userSearch, pageNumber.next); //.next grabs the next page of data dynamically
 })
 
@@ -112,6 +116,7 @@ $(".color-box").on('click', function() {
     $("#next").show()
     $(".search-results").show()
 
+    $("#results").empty();
     userRequest(userSearch, 1); //.next grabs the next page of data dynamically
 })
 
@@ -132,6 +137,7 @@ $(".dropdown-item").on('click', function() {
     $("#next").show()
     $(".search-results").show()
 
+    $("#results").empty();
     userRequest(userSearch, 1); //takes whatever dropdown item is clicked and searches for it
 })
 
@@ -232,7 +238,7 @@ function renderProducts(products) {
     let anchor = document.querySelector(".results-section");
 
     if (products.length === 0) {
-        html += "<h3 class=\"fail-message\">Uh oh! We couldn't find any matches.</h3>"
+       $("#results").append(`<h3 class="fail-message">Uh oh! We couldn't find any matches.</h3>`)
     } else {
 
     products.forEach(result => {
@@ -242,32 +248,26 @@ function renderProducts(products) {
         let originalPrice = parseFloat(result.price).toFixed(2)
         let salePrice = parseFloat(result.msrp).toFixed(2)
 
-        html += ""
+        $("#results").append(
+            `<div class="card col-sm-6 col-md-4 col-lg-3" col-centered>  
+                <div class="card-body">
+                <img class= "card-img-top" src="${result.thumbnailImageUrl}">
+                <h4 class= "card-title">${result.name}</h4>
 
-        html += "<div class=\"card col-sm-6 col-md-4 col-lg-3 col-centered\">"
+                ${!hasSale || originalPrice >= salePrice ? `<p class="normal-price">$ ${originalPrice}</p>` : `<p class="strike-price"><strike>$" ${salePrice}</strike></p><p class="new-price">${originalPrice}</p>`}
 
-        html += "<div class=\"card-body\">"
+                <br>
 
-        html += "<img class= \"card-img-top\" src=\"" + result.thumbnailImageUrl + "\">" +
-            "<h4 class= \"card-title\">" + result.name + "</h4>"
+                <button type="button" class="btn gradient-btn text-center add-to-cart-btn">Add To Cart</button>
+    
+            </div>
+            </div>
 
-        if (!hasSale || originalPrice >= salePrice) {
-            html += "<p class=\"normal-price\">$" + originalPrice + "</p>"
-        } else {
-            html += "<p class=\"strike-price\"><strike>$" + salePrice + "</strike></p>" + " " +
-                "<p class=\"new-price\">$" + originalPrice + "</p>"
-        }
-
-        html += "<br>"
-        html += "<button type=\"button\" class=\"btn gradient-btn text-center add-to-cart-btn\">Add To Cart</button>"
-
-        html += "</div>"
-        html += "</div>"
+            ` 
+        )
     })
     }
 
-
-    document.getElementById("results").innerHTML = html
     anchor.scrollIntoView({behavior: "smooth"});
 
 }
