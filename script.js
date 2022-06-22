@@ -254,7 +254,7 @@ function renderProducts(products) {
                 <img class= "card-img-top" src="${result.thumbnailImageUrl}">
                 <h4 class= "card-title">${result.name}</h4>
 
-                ${!hasSale || originalPrice >= salePrice ? `<p class="normal-price">$ ${originalPrice}</p>` : `<p class="strike-price"><strike>$${salePrice}</strike></p><p class="new-price">${originalPrice}</p>`}
+                ${!hasSale || originalPrice >= salePrice ? `<p class="normal-price">$${originalPrice}</p>` : `<p class="strike-price"><strike>$${salePrice}</strike></p><p class="new-price">$${originalPrice}</p>`}
 
                 <br>
 
